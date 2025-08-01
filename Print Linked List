@@ -19,6 +19,7 @@ class Node{
      }
 };
 
+//traversing for finding head
 Node* converArraytoLinkedList(vector<int> &arr){
     
     Node* head = new Node(arr[0]);
@@ -47,7 +48,6 @@ int main() {
 	// your code goes here
 	vector<int> arr = {1 , 2 , 3 , 4};
 	Node* head = converArraytoLinkedList(arr);
-	cout<<head->data;
 	
 	printLinkedList(head);
 	
