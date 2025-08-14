@@ -1,0 +1,66 @@
+#include<iostream>
+using namespace std;
+
+class Node{
+    public:
+        int data;
+        Node* next;
+
+        Node(int data , Node* next){
+            this->data = data;
+            this->next = next;
+        }
+
+        Node(int data){
+            this->data = data;
+            this->next = nullptr;
+        }
+};
+
+void printLL(Node* head){
+    while(head != NULL){
+        cout<<head->data<<" ";
+        head = head->next;
+    }
+}
+
+Node* insertAtIndex(Node* head, int val, int ind) {
+    // Insert at head if ind == 1
+    if (ind == 1) {
+        Node* newNode = new Node(val);
+        newNode->next = head;
+        return newNode;
+    }
+
+    Node* temp = head;
+    int cnt = 1;
+
+    while (temp != NULL && cnt < ind - 1) {
+        temp = temp->next;
+        cnt++;
+    }
+
+    if (temp == NULL) {
+        cout << "Index out of range" << endl;
+        return head;
+    }
+
+    Node* newNode = new Node(val);
+    newNode->next = temp->next;
+    temp->next = newNode;
+
+    return head;
+}
+
+
+
+int main(){
+    Node* head = new Node(2);
+    head->next = new Node(3);
+    head->next->next = new Node(4);
+
+    head = insertAtIndex(head , 1 , 1);
+    printLL(head);
+
+    return 0;
+}
